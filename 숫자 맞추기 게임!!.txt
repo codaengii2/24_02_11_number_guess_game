@@ -1,0 +1,82 @@
+숫자 맞추기 게임!!
+
+< 랜덤번호 지정 >
+유저가 번호를 입력한다 그리고 go라는 버튼을 누름
+만약에 유저가 랜덤번호를 맞추면, 맞췄습니다!
+랜덤번호 < 유저번호 Down
+랜덤번호 > 유저번호 Up
+Reset 버튼을 누르면 게임리 reset
+5번의 기회를 다 쓰면 게임종료 (더이상 추측 불가, 버튼이 disable)
+유저가 1~100 범위 밖에 숫자를 입력하면 알려줌. 기회가 깎이지 않는다
+유저가 이미 입력한 숫자를 또 입력하면, 알려줌. 기회가 깎이지 않는다
+
+
+
+document는 DOM트리의 최상위 객체
+DOM(Document Object Model)은 일종의 문자열일 뿐인 HTML을 자바스크립트가 이해할 수 있게
+객체의 형태로 변환하여 사용
+Document = HTML 비슷
+DOM을 자바스크립트가 마음대로 컨트롤할 수 있게 필요한 기본 함수들과
+속성값을 제공해주는 것이 document 객체!
+
+
+
+Math.random(): 0~1 사이의 값을 반환(1에 근접한 값까지지만 1은 미포함)
+Math.floor(): 소수점 버림
+Math.ceil(): 소수점 올림
+Math.round(): 소수점 반올림
+Math.max(): 여러 개의 값 중 제일 큰값 반환
+Math.min(): 여러 개의 값 중 제일 작은 값 반환
+
+
+ < Element selectors >
+- 자바스크립트가 HTML를 다루기 위해 HTML태그를 선택해야하는데,
+document 객체에서 다양하게 선택하는 방식을 제공함
+
+document.getElementById: id로 선택
+document.getElementByClassName: class로 선택, 같은 class가 여러 개 있을 경우엔
+모두 선택되어 배열에 저장됨
+
+ex) 
+  <div class="menu">menu1</div>
+  <div class="menu">menu2</div>
+  <div class="menu">menu3</div>
+
+  console.log(document.getElementsByClassName("menu"))
+
+  => HTMLCollection(3) [div.menu, div.menu, div.menu]
+  0: div.menu
+  1: div.menu
+  2: div.menu
+  length: 3
+
+
+  document.querySelector: id,class 둘다 선택가능, 디테일한 선택가능
+  선택가능한 값이 여러 개가 있을 경우 그 중에 첫번째 태그 하나만 반환
+
+  ex)
+  let userInput = document.querySelector("#user-input"); // id = user-input
+  let resultAreaImg = document.querySelector(".main-img"); // class = main-img
+  let menus = document.querySelector("nav a"); // nav 태그 안의 자식,손자 a 태그 선택
+
+  document.querySelectorAll: 위의 document.querySelector와 같음 하지만 All에서 알 수 있듯
+  선택된 값 모두를 NodeList에 담아 반환
+
+  <다양한 노드의 속성값>
+  textContent: 노드의 text값을 반환.
+  innerText: 노드의 text값을 반환. textContent와 비슷하지만
+  모든 요소를 반환 (textContent) / 사람이 읽을 수 있는 글자만 반환 (innerText) 
+  글자 사이 스페이스가 많을 경우
+  있는 그대로 가져옴 (textContent) / 스페이스를 한칸만 남기고 가져옴 (innerText)
+
+  ex)
+    <h1 id="test">
+      <div>Hello              world</div>
+    </h1>
+
+    let test = document.getElementById("test");
+    console.log(test.innerText); => Hello world
+    console.log(test.textContent); =>    Hello            world
+    console.log(test.innerHTML); => <div>Hello         world<div>
+
+
